@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="scripts.js"></script>
+    <title>DataWare - Gestion des Ressources Humaines</title>
+</head>
+
+<body>
+    <h1>DataWare - Gestion des Ressources Humaines</h1>
+
+    <!-- Boutons d'actions -->
+    <div>
+        <button onclick="displayData()">Afficher les Membres</button>
+        <button onclick="showUpdateForm()">Modifier un Membre</button>
+        <button onclick="showDeleteForm()">Supprimer un Membre</button>
+        <button onclick="showInsertForm()">Ajouter un Nouveau Membre</button>
+    </div>
+
+    <!-- Formulaire de modification -->
+    <div id="updateForm" style="display: none;">
+        <h2>Modifier un Membre</h2>
+        <form id="updateMemberForm">
+            ID du Membre: <input type="text" id="updateId" name="id"><br>
+            Nouvel Email: <input type="text" id="newEmail" name="email"><br>
+            <input type="button" value="Modifier" onclick="updateData()">
+        </form>
+    </div>
+
+    <!-- Formulaire de suppression -->
+    <div id="deleteForm" style="display: none;">
+        <h2>Supprimer un Membre</h2>
+        <form id="deleteMemberForm">
+            ID du Membre à Supprimer: <input type="text" id="deleteId" name="id"><br>
+            <input type="button" value="Supprimer" onclick="deleteData()">
+        </form>
+    </div>
+
+    <!-- Formulaire d'ajout -->
+    <div id="insertForm" style="display: none;">
+        <h2>Ajouter un Nouveau Membre</h2>
+        <form id="insertMemberForm" method="POST" action="insert_data.php">
+            Nom: <input type="text" id="nom" name="nom"><br>
+            Prénom: <input type="text" id="prenom" name="prenom"><br>
+            Email: <input type="text" id="email" name="email"><br>
+            Téléphone: <input type="text" id="telephone" name="telephone"><br>
+            Rôle: <input type="text" id="role" name="role"><br>
+            ID de l'Équipe: <input type="text" id="equipe" name="equipe"><br>
+            Statut: <input type="text" id="statut" name="statut"><br>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+
+    <div id="result"></div>
+</body>
+
+</html>
