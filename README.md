@@ -1,9 +1,11 @@
 #DataWare - Gestion des Ressources Humaines
+
 #Description du Projet
 
 Bienvenue dans le projet de gestion des ressources humaines de DataWare. L'objectif de ce projet est de concevoir une interface conviviale exploitant les langages PHP et SQL pour répondre aux besoins de gestion du personnel de l'entreprise.
 
 #Tâches Accomplies
+
 Diagrammes UML
 
  Diagramme de Cas d'Utilisation : Création d'un diagramme identifiant les interactions entre les utilisateurs et le système.
