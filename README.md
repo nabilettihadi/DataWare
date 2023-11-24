@@ -2,6 +2,7 @@
 #Description du Projet
 
 Bienvenue dans le projet de gestion des ressources humaines de DataWare. L'objectif de ce projet est de concevoir une interface conviviale exploitant les langages PHP et SQL pour répondre aux besoins de gestion du personnel de l'entreprise.
+
 #Tâches Accomplies
 Diagrammes UML
 
@@ -12,8 +13,7 @@ Diagrammes UML
 Base de Données
 
  Création de la Base de Données : Définition d'une base de données "DataWareDB" avec des tables pour les Équipes et les Membres du personnel.
-
-     Insertion de Données Initiales : Ajout de données simulées pour les équipes et le personnel à l'aide de commandes SQL.
+ Insertion de Données Initiales : Ajout de données simulées pour les équipes et le personnel à l'aide de commandes SQL.
 
 Développement Backend
 
@@ -29,7 +29,7 @@ Fonctionnalités Bonus
 
 Comment Tester
 
-    Cloner le repository GitHub.
-    Exécuter les commandes SQL pour créer la base de données, les tables et insérer des données initiales.
-    Ouvrir le projet dans un navigateur pour visualiser l'interface conviviale.
-    Explorer les fonctionnalités de gestion des ressources humaines.
+ Cloner le repository GitHub.
+ Exécuter les commandes SQL pour créer la base de données, les tables et insérer des données initiales.
+ Ouvrir le projet dans un navigateur pour visualiser l'interface conviviale.
+ Explorer les fonctionnalités de gestion des ressources humaines.
