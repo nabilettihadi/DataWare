@@ -4,58 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- Link to Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="scripts.js"></script>
+    <style>
+        /* Additional styles can be added here if needed */
+    </style>
     <title>DataWare - Gestion des Ressources Humaines</title>
 </head>
 
-<body>
-    <h1>DataWare - Gestion des Ressources Humaines</h1>
+<body class="font-sans bg-gradient-to-r from-blue-500 to-teal-500">
 
-    <!-- Boutons d'actions -->
-    <div>
-        <button onclick="displayData()">Afficher les Membres</button>
-        <button onclick="showUpdateForm()">Modifier un Membre</button>
-        <button onclick="showDeleteForm()">Supprimer un Membre</button>
-        <button onclick="showInsertForm()">Ajouter un Nouveau Membre</button>
+    <!-- Container div with max-width -->
+    <div class="container mx-auto p-4 bg-white rounded shadow-lg">
+
+        <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">DataWare - Gestion des Ressources Humaines</h1>
+
+        <!-- Boutons d'actions -->
+        <div class="mb-4 space-x-4 text-center">
+            <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded" onclick="displayData()">Afficher les Membres et les Equipes</button>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="showUpdateForm()">Modifier un Membre</button>
+            <button class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" onclick="showDeleteForm()">Supprimer un Membre</button>
+            <button class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded" onclick="showInsertForm()">Ajouter un Nouveau Membre</button>
+        </div>
+
+        <!-- Formulaire de modification -->
+        <div id="updateForm" style="display: none;" class="mx-auto max-w-md">
+            <h2 class="text-2xl font-bold mb-4 text-center">Modifier un Membre</h2>
+            <form id="updateMemberForm">
+                <label for="updateId" class="block mb-2">ID du Membre:</label>
+                <input type="text" id="updateId" name="id" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="newEmail" class="block mb-2">Nouvel Email:</label>
+                <input type="text" id="newEmail" name="email" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <button type="button" onclick="updateData()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Modifier</button>
+            </form>
+        </div>
+
+        <!-- Formulaire de suppression -->
+        <div id="deleteForm" style="display: none;" class="mx-auto max-w-md">
+            <h2 class="text-2xl font-bold mb-4 text-center">Supprimer un Membre</h2>
+            <form id="deleteMemberForm">
+                <label for="deleteId" class="block mb-2">ID du Membre à Supprimer:</label>
+                <input type="text" id="deleteId" name="id" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <button type="button" onclick="deleteData()" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">Supprimer</button>
+            </form>
+        </div>
+
+        <!-- Formulaire d'ajout -->
+        <div id="insertForm" style="display: none;" class="mx-auto max-w-md">
+            <h2 class="text-2xl font-bold mb-4 text-center">Ajouter un Nouveau Membre</h2>
+            <form id="insertMemberForm" method="POST" action="insert_data.php">
+                <label for="nom" class="block mb-2">Nom:</label>
+                <input type="text" id="nom" name="nom" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="prenom" class="block mb-2">Prénom:</label>
+                <input type="text" id="prenom" name="prenom" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="email" class="block mb-2">Email:</label>
+                <input type="text" id="email" name="email" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="telephone" class="block mb-2">Téléphone:</label>
+                <input type="text" id="telephone" name="telephone" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="role" class="block mb-2">Rôle:</label>
+                <input type="text" id="role" name="role" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="equipe" class="block mb-2">ID de l'Équipe:</label>
+                <input type="text" id="equipe" name="equipe" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <label for="statut" class="block mb-2">Statut:</label>
+                <input type="text" id="statut" name="statut" class="border rounded py-2 px-3 mb-2">
+                <br>
+                <button type="submit" onclick="insertData()" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded">Ajouter</button>
+            </form>
+        </div>
+
     </div>
-
-    <!-- Formulaire de modification -->
-    <div id="updateForm" style="display: none;">
-        <h2>Modifier un Membre</h2>
-        <form id="updateMemberForm">
-            ID du Membre: <input type="text" id="updateId" name="id"><br>
-            Nouvel Email: <input type="text" id="newEmail" name="email"><br>
-            <input type="button" value="Modifier" onclick="updateData()">
-        </form>
-    </div>
-
-    <!-- Formulaire de suppression -->
-    <div id="deleteForm" style="display: none;">
-        <h2>Supprimer un Membre</h2>
-        <form id="deleteMemberForm">
-            ID du Membre à Supprimer: <input type="text" id="deleteId" name="id"><br>
-            <input type="button" value="Supprimer" onclick="deleteData()">
-        </form>
-    </div>
-
-    <!-- Formulaire d'ajout -->
-    <div id="insertForm" style="display: none;">
-        <h2>Ajouter un Nouveau Membre</h2>
-        <form id="insertMemberForm" method="POST" action="insert_data.php">
-            Nom: <input type="text" id="nom" name="nom"><br>
-            Prénom: <input type="text" id="prenom" name="prenom"><br>
-            Email: <input type="text" id="email" name="email"><br>
-            Téléphone: <input type="text" id="telephone" name="telephone"><br>
-            Rôle: <input type="text" id="role" name="role"><br>
-            ID de l'Équipe: <input type="text" id="equipe" name="equipe"><br>
-            Statut: <input type="text" id="statut" name="statut"><br>
-            <input type="submit" value="Ajouter">
-        </form>
-    </div>
-
     <div id="result"></div>
 </body>
 
 </html>
+
+
